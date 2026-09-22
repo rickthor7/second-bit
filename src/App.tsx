@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/hooks/useTheme";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BottomNav from "@/components/layout/BottomNav";
@@ -18,40 +19,45 @@ import AdminDashboard from "@/pages/admin/Dashboard";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
-        <Navbar />
-        <div style={{ flex: 1 }}>
-          <Routes>
-            {/* Public */}
-            <Route path="/" element={<Home />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/flash-deals" element={<FlashDeals />} />
-            <Route path="/hidden-gem" element={<HiddenGem />} />
-            <Route path="/product/:slug" element={<ProductDetail />} />
-            <Route path="/umkm/:slug" element={<UMKMDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+          }}
+        >
+          <Navbar />
+          <div style={{ flex: 1 }}>
+            <Routes>
+              {/* Public */}
+              <Route path="/" element={<Home />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/flash-deals" element={<FlashDeals />} />
+              <Route path="/hidden-gem" element={<HiddenGem />} />
+              <Route path="/product/:slug" element={<ProductDetail />} />
+              <Route path="/umkm/:slug" element={<UMKMDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
 
-            {/* Buyer */}
-            <Route path="/buyer" element={<BuyerDashboard />} />
+              {/* Buyer */}
+              <Route path="/buyer" element={<BuyerDashboard />} />
+              <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
 
-            {/* Seller */}
-            <Route path="/seller" element={<SellerDashboard />} />
+              {/* Seller */}
+              <Route path="/seller" element={<SellerDashboard />} />
+              <Route path="/seller/dashboard" element={<SellerDashboard />} />
 
-            {/* Admin */}
-            <Route path="/admin" element={<AdminDashboard />} />
-          </Routes>
+              {/* Admin */}
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Routes>
+          </div>
+          <Footer />
+          <BottomNav />
         </div>
-        <Footer />
-        <BottomNav />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

@@ -73,7 +73,7 @@ export default function SellerDashboard() {
             <div
               key={label}
               style={{
-                backgroundColor: "#fff",
+                backgroundColor: "var(--background)",
                 borderRadius: "var(--radius-xl)",
                 boxShadow: "var(--shadow-sm)",
                 padding: "18px 20px",
@@ -94,7 +94,7 @@ export default function SellerDashboard() {
         {/* Quick Actions */}
         <div
           style={{
-            backgroundColor: "#fff",
+            backgroundColor: "var(--background)",
             borderRadius: "var(--radius-xl)",
             boxShadow: "var(--shadow-sm)",
             padding: "20px",
@@ -139,7 +139,7 @@ export default function SellerDashboard() {
         {/* Pending Orders */}
         <div
           style={{
-            backgroundColor: "#fff",
+            backgroundColor: "var(--background)",
             borderRadius: "var(--radius-xl)",
             boxShadow: "var(--shadow-sm)",
             padding: "20px",

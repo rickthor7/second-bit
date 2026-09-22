@@ -64,6 +64,49 @@
   --z-tooltip: 600;
 }
 
+/* ===== Dark Mode ===== */
+
+[data-theme="dark"] {
+  /* Brand Colors — slightly adjusted for dark bg */
+  --primary: #FF6B4A;
+  --primary-dark: #EE4D2D;
+  --primary-light: #3D2219;
+  --primary-lighter: #2A1A14;
+  --secondary: #FF8855;
+  --secondary-light: #332218;
+
+  /* Neutral */
+  --background: #121212;
+  --surface: #1E1E1E;
+  --surface-hover: #2A2A2A;
+  --foreground: #E8E8E8;
+  --foreground-secondary: #B0B0B0;
+  --muted: #888888;
+  --muted-light: #666666;
+  --border: #333333;
+  --border-light: #262626;
+
+  /* Semantic */
+  --success: #4CD990;
+  --success-light: #1A2E22;
+  --warning: #FFB833;
+  --warning-light: #2E2510;
+  --destructive: #FF5252;
+  --destructive-light: #2E1515;
+  --info: #64B5F6;
+  --info-light: #152030;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
+}
+
 /* ===== Base Styles ===== */
 
 * {
@@ -84,6 +127,7 @@ body {
   color: var(--foreground);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 a {

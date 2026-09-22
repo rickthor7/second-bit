@@ -6,7 +6,7 @@ export default function Footer() {
     <footer
       style={{
         backgroundColor: "var(--foreground)",
-        color: "#fff",
+        color: "var(--background)",
         padding: "48px 0 24px",
         marginTop: 60,
       }}
@@ -29,13 +29,13 @@ export default function Footer() {
                 marginBottom: 12,
               }}
             >
-              <span style={{ color: "#fff" }}>Second</span>
+              <span>Second</span>
               <span style={{ color: "var(--primary)" }}>Bit</span>
             </h3>
             <p
               style={{
                 fontSize: 14,
-                color: "rgba(255,255,255,0.6)",
+                opacity: 0.6,
                 lineHeight: 1.7,
                 marginBottom: 16,
               }}
@@ -62,6 +62,7 @@ export default function Footer() {
                     alignItems: "center",
                     justifyContent: "center",
                     transition: "background var(--transition-fast)",
+                    color: "inherit",
                   }}
                   onMouseOver={(e) =>
                     (e.currentTarget.style.backgroundColor =
@@ -87,7 +88,7 @@ export default function Footer() {
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
                 marginBottom: 16,
-                color: "rgba(255,255,255,0.5)",
+                opacity: 0.5,
               }}
             >
               Menu
@@ -104,15 +105,12 @@ export default function Footer() {
                   to={link.path}
                   style={{
                     fontSize: 14,
-                    color: "rgba(255,255,255,0.7)",
-                    transition: "color var(--transition-fast)",
+                    opacity: 0.7,
+                    transition: "opacity var(--transition-fast)",
+                    color: "inherit",
                   }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.style.color = "#fff")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.7)")
-                  }
+                  onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseOut={(e) => (e.currentTarget.style.opacity = "0.7")}
                 >
                   {link.label}
                 </Link>
@@ -129,7 +127,7 @@ export default function Footer() {
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
                 marginBottom: 16,
-                color: "rgba(255,255,255,0.5)",
+                opacity: 0.5,
               }}
             >
               Untuk UMKM
@@ -146,15 +144,12 @@ export default function Footer() {
                   href="#"
                   style={{
                     fontSize: 14,
-                    color: "rgba(255,255,255,0.7)",
-                    transition: "color var(--transition-fast)",
+                    opacity: 0.7,
+                    transition: "opacity var(--transition-fast)",
+                    color: "inherit",
                   }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.style.color = "#fff")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.style.color = "rgba(255,255,255,0.7)")
-                  }
+                  onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseOut={(e) => (e.currentTarget.style.opacity = "0.7")}
                 >
                   {label}
                 </a>
@@ -171,7 +166,7 @@ export default function Footer() {
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
                 marginBottom: 16,
-                color: "rgba(255,255,255,0.5)",
+                opacity: 0.5,
               }}
             >
               Kontak
@@ -195,7 +190,7 @@ export default function Footer() {
                     alignItems: "center",
                     gap: 10,
                     fontSize: 14,
-                    color: "rgba(255,255,255,0.7)",
+                    opacity: 0.7,
                   }}
                 >
                   <Icon size={16} style={{ flexShrink: 0 }} />
@@ -217,7 +212,7 @@ export default function Footer() {
             alignItems: "center",
             gap: 12,
             fontSize: 13,
-            color: "rgba(255,255,255,0.4)",
+            opacity: 0.4,
           }}
         >
           <span>© 2026 SecondBit. All rights reserved.</span>

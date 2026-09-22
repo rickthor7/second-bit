@@ -39,7 +39,7 @@ export default function Register() {
         style={{
           width: "100%",
           maxWidth: 420,
-          backgroundColor: "#fff",
+          backgroundColor: "var(--background)",
           borderRadius: "var(--radius-xl)",
           boxShadow: "var(--shadow-lg)",
           padding: "40px 32px",

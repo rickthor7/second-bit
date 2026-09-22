@@ -56,7 +56,7 @@ export default function AdminDashboard() {
             <div
               key={label}
               style={{
-                backgroundColor: "#fff",
+                backgroundColor: "var(--background)",
                 borderRadius: "var(--radius-xl)",
                 boxShadow: "var(--shadow-sm)",
                 padding: "18px 20px",
@@ -113,7 +113,7 @@ export default function AdminDashboard() {
           {/* Recent Activities */}
           <div
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "var(--background)",
               borderRadius: "var(--radius-xl)",
               boxShadow: "var(--shadow-sm)",
               padding: "20px",
@@ -160,7 +160,7 @@ export default function AdminDashboard() {
           {/* Quick Management */}
           <div
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "var(--background)",
               borderRadius: "var(--radius-xl)",
               boxShadow: "var(--shadow-sm)",
               padding: "20px",

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Star, Clock, MapPin } from "lucide-react";
-import { Product, formatPrice, getDiscountPercent } from "@/data/mockData";
+import type { Product } from "@/types";
+import { formatPrice, getDiscountPercent } from "@/data/mockData";
 
 interface ProductCardProps {
   product: Product;

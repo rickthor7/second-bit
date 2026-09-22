@@ -56,7 +56,7 @@ export default function BuyerDashboard() {
         {/* Quick Actions */}
         <div
           style={{
-            backgroundColor: "#fff",
+            backgroundColor: "var(--background)",
             borderRadius: "var(--radius-xl)",
             boxShadow: "var(--shadow-md)",
             padding: "20px",

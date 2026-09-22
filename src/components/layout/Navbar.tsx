@@ -8,7 +8,10 @@ import {
   X,
   MapPin,
   ChevronDown,
+  Sun,
+  Moon,
 } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 import logoImg from "@/assets/images/logo.jpg";
 
 export default function Navbar() {
@@ -16,12 +19,28 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const [auth, setAuth] = useState<{ role?: string; name?: string; isLoggedIn?: boolean } | null>(null);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("secondbit-auth");
+      if (stored) {
+        setAuth(JSON.parse(stored));
+      } else {
+        setAuth(null);
+      }
+    } catch {
+      setAuth(null);
+    }
+  }, [location]);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -43,8 +62,10 @@ export default function Navbar() {
         style={{
           position: "sticky",
           top: 0,
-          zIndex: "var(--z-sticky)" as any,
-          backgroundColor: isScrolled ? "rgba(255,255,255,0.97)" : "#fff",
+          zIndex: 200,
+          backgroundColor: isScrolled
+            ? (theme === "dark" ? "rgba(18,18,18,0.97)" : "rgba(255,255,255,0.97)")
+            : (theme === "dark" ? "var(--background)" : "#fff"),
           backdropFilter: isScrolled ? "blur(10px)" : "none",
           boxShadow: isScrolled ? "var(--shadow-sm)" : "none",
           transition: "all var(--transition-normal)",
@@ -167,10 +188,31 @@ export default function Navbar() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 8,
+                gap: 4,
                 marginLeft: "auto",
               }}
             >
+              {/* Theme Toggle */}
+              <button
+                className="btn btn-icon btn-ghost"
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                title={theme === "dark" ? "Light Mode" : "Dark Mode"}
+                style={{
+                  display: "flex",
+                  width: 36,
+                  height: 36,
+                  borderRadius: "var(--radius-full)",
+                  transition: "all var(--transition-fast)",
+                }}
+              >
+                {theme === "dark" ? (
+                  <Sun size={19} style={{ color: "var(--warning)" }} />
+                ) : (
+                  <Moon size={19} style={{ color: "var(--muted)" }} />
+                )}
+              </button>
+
               {/* Search icon - Mobile */}
               <Link
                 to="/explore"
@@ -182,10 +224,21 @@ export default function Navbar() {
               <Link to="/buyer" className="btn btn-icon btn-ghost" aria-label="Cart">
                 <ShoppingCart size={20} />
               </Link>
-              <Link to="/login" className="btn btn-primary btn-sm desktop-only">
-                <User size={16} />
-                Masuk
-              </Link>
+              {auth?.isLoggedIn ? (
+                <Link
+                  to={auth.role === "seller" ? "/seller" : auth.role === "admin" ? "/admin" : "/buyer"}
+                  className="btn btn-primary btn-sm desktop-only"
+                  style={{ gap: 6 }}
+                >
+                  <User size={15} />
+                  <span>Dashboard {auth.role === "seller" ? "UMKM" : auth.role === "admin" ? "Admin" : "Saya"}</span>
+                </Link>
+              ) : (
+                <Link to="/login" className="btn btn-primary btn-sm desktop-only">
+                  <User size={16} />
+                  Masuk
+                </Link>
+              )}
               <button
                 className="btn btn-icon btn-ghost mobile-only"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -206,11 +259,11 @@ export default function Navbar() {
               top: "100%",
               left: 0,
               right: 0,
-              backgroundColor: "#fff",
+              backgroundColor: "var(--background)",
               boxShadow: "var(--shadow-lg)",
               padding: "16px",
               animation: "fadeIn 0.2s ease",
-              zIndex: "var(--z-dropdown)" as any,
+              zIndex: 100,
             }}
           >
             {/* Mobile Search */}
@@ -267,17 +320,35 @@ export default function Navbar() {
                   margin: "8px 0",
                 }}
               />
-              <Link
-                to="/login"
-                style={{
-                  padding: "12px 16px",
-                  fontSize: 15,
-                  fontWeight: 500,
-                  color: "var(--primary)",
-                }}
-              >
-                Masuk / Daftar
-              </Link>
+              {auth?.isLoggedIn ? (
+                <Link
+                  to={auth.role === "seller" ? "/seller" : auth.role === "admin" ? "/admin" : "/buyer"}
+                  style={{
+                    padding: "12px 16px",
+                    fontSize: 15,
+                    fontWeight: 600,
+                    color: "var(--primary)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <User size={16} />
+                  Dashboard {auth.role === "seller" ? "Mitra UMKM" : auth.role === "admin" ? "Admin" : "Pembeli"}
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  style={{
+                    padding: "12px 16px",
+                    fontSize: 15,
+                    fontWeight: 500,
+                    color: "var(--primary)",
+                  }}
+                >
+                  Masuk / Daftar
+                </Link>
+              )}
             </nav>
           </div>
         )}

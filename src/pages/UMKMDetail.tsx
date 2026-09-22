@@ -69,7 +69,7 @@ export default function UMKMDetail() {
         {/* Profile Card */}
         <div
           style={{
-            backgroundColor: "#fff",
+            backgroundColor: "var(--background)",
             borderRadius: "var(--radius-xl)",
             boxShadow: "var(--shadow-lg)",
             padding: "24px",
@@ -88,7 +88,7 @@ export default function UMKMDetail() {
                 height: 80,
                 borderRadius: "var(--radius-lg)",
                 objectFit: "cover",
-                border: "3px solid #fff",
+                border: "3px solid var(--background)",
                 boxShadow: "var(--shadow-md)",
               }}
             />
